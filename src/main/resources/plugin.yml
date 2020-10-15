@@ -1,0 +1,39 @@
+name: Sumo
+version: 1.0-SNAPSHOT
+main: thatguydavid09.sumo.SuperSumo
+prefix: Super Sumo
+authors: [ThatGuyDavid09]
+description: "This is a sumo plugin specified by this request: https://bukkit.org/threads/sumo-event-plugin.488464/"
+
+commands:
+  sumo:
+    description: The base command for everything
+    usage: /<command> (join|leave)
+    permission: supersumo.sumo
+
+permissions:
+
+  supersumo.*:
+    description: Gives player access to all SuperSumo commands
+    default: op
+    children:
+      supersumo.admin: true
+      supersumo.player: true
+
+  supersumo.admin:
+    description: Gives player access to SuperSumo admin commands
+    default: op
+    children:
+      supersumo.sumo.set: true
+      supersumo.sumo.remove: true
+      supersumo.player: true
+
+  supersumo.player:
+    description: Gives player access to player commands
+    default: not op
+    children:
+      supersumo.sumo: true
+      supersumo.sumo.join: true
+      supersumo.sumo.leave: true
+      supersumo.sumo.set: false
+      supersumo.sumo.remove: false
